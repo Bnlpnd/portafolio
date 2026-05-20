@@ -8,6 +8,7 @@ import {
   Database,
   FileSpreadsheet,
   Cpu,
+  CheckCircle2,
 } from "lucide-react";
 
 const projects = [
@@ -31,7 +32,7 @@ const projects = [
       },
     ],
     tags: ["Python", "Django", "Scikit-learn", "SQLite", "Machine Learning"],
-    accent: "violet",
+    highlight: "Machine Learning",
   },
   {
     title: "Sistema de Gestión de Resoluciones Municipales",
@@ -40,7 +41,7 @@ const projects = [
     icon: FileText,
     features: [
       {
-        icon: Database,
+        icon: CheckCircle2,
         text: "Registro, filtrado y seguimiento de documentos administrativos",
       },
       {
@@ -48,77 +49,88 @@ const projects = [
         text: "Exportación automatizada de información a Excel",
       },
       {
-        icon: Cpu,
-        text: "Implementación local para uso institucional con control de roles",
+        icon: Database,
+        text: "Implementación con control de roles para uso institucional",
       },
     ],
     tags: ["Python", "Django", "SQL", "Control de Acceso", "Excel"],
-    accent: "blue",
+    highlight: "Gestión Pública",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="proyectos" className="py-24 sm:py-32">
+    <section id="proyectos" className="section-padding relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--border))] to-transparent" />
+
       <div className="max-w-6xl mx-auto px-6">
-        <AnimatedSection>
-          <span className="text-xs font-medium text-violet-400 tracking-widest uppercase">
+        <AnimatedSection className="text-center mb-16">
+          <span className="inline-block text-xs font-semibold text-[hsl(var(--accent))] tracking-[0.2em] uppercase mb-4">
             Proyectos
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[hsl(var(--fg))] mb-4">
             Proyectos Destacados
           </h2>
-          <p className="text-zinc-500 max-w-xl mb-12">
+          <p className="text-[hsl(var(--fg-muted))] max-w-xl mx-auto">
             Soluciones reales desarrolladas para organizaciones, combinando
             análisis de requerimientos con implementación técnica.
           </p>
         </AnimatedSection>
 
-        <StaggerContainer className="grid md:grid-cols-2 gap-6" staggerDelay={0.15}>
+        <StaggerContainer
+          className="grid md:grid-cols-2 gap-6"
+          staggerDelay={0.2}
+        >
           {projects.map((project) => (
             <StaggerItem key={project.title}>
-              <div className="glass rounded-2xl p-6 sm:p-8 glass-hover group h-full flex flex-col">
-                <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform group-hover:scale-110 ${
-                    project.accent === "violet"
-                      ? "bg-violet-500/10 text-violet-400"
-                      : "bg-blue-500/10 text-blue-400"
-                  }`}
-                >
-                  <project.icon size={22} />
-                </div>
-
-                <h3 className="text-lg font-semibold text-zinc-100 mb-3">
-                  {project.title}
-                </h3>
-
-                <p className="text-sm text-zinc-400 leading-relaxed mb-5">
-                  {project.description}
-                </p>
-
-                <div className="space-y-3 mb-6 flex-1">
-                  {project.features.map((feature, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <feature.icon
-                        size={14}
-                        className="text-zinc-600 mt-0.5 shrink-0"
+              <div className="card-base rounded-2xl overflow-hidden h-full flex flex-col group">
+                <div className="p-7 sm:p-8 flex-1 flex flex-col">
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-[hsl(var(--accent-subtle))] flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <project.icon
+                        size={22}
+                        className="text-[hsl(var(--accent))]"
                       />
-                      <span className="text-xs text-zinc-500">
-                        {feature.text}
-                      </span>
                     </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/[0.04]">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-xs text-zinc-400 bg-white/[0.03] border border-white/[0.06] rounded-lg"
-                    >
-                      {tag}
+                    <span className="px-3 py-1 text-[10px] font-semibold text-[hsl(var(--accent))] bg-[hsl(var(--accent-subtle))] rounded-full">
+                      {project.highlight}
                     </span>
-                  ))}
+                  </div>
+
+                  <h3 className="text-lg font-bold text-[hsl(var(--fg))] mb-3">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-sm text-[hsl(var(--fg-muted))] leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+
+                  <div className="space-y-3 mb-6 flex-1">
+                    {project.features.map((feature, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="w-6 h-6 rounded-md bg-[hsl(var(--accent-subtle))] flex items-center justify-center shrink-0 mt-0.5">
+                          <feature.icon
+                            size={12}
+                            className="text-[hsl(var(--accent))]"
+                          />
+                        </div>
+                        <span className="text-xs text-[hsl(var(--fg-muted))] leading-relaxed">
+                          {feature.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 pt-5 border-t border-[hsl(var(--border))] mt-auto">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 text-xs text-[hsl(var(--fg-muted))] bg-[hsl(var(--bg-alt))] border border-[hsl(var(--border))] rounded-lg"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </StaggerItem>

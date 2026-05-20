@@ -1,12 +1,12 @@
 "use client";
 
 import { AnimatedSection, StaggerContainer, StaggerItem } from "./motion";
-import { Calendar, Building2 } from "lucide-react";
+import { Calendar, Building2, ArrowRight } from "lucide-react";
 
 const experiences = [
   {
     title: "Desarrolladora de Sistemas",
-    subtitle: "Proyecto de Tesis",
+    badge: "Proyecto de Tesis",
     company: "Carpintería Metálica Santa Ana",
     location: "Lambayeque",
     period: "2025",
@@ -21,8 +21,8 @@ const experiences = [
   },
   {
     title: "Practicante de Sistemas",
+    badge: "Control Urbano y Catastro",
     company: "Municipalidad Regional de Lambayeque",
-    subtitle: "Área de Control Urbano y Catastro",
     location: "Lambayeque",
     period: "2025",
     description: [
@@ -49,74 +49,93 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experiencia" className="py-24 sm:py-32">
+    <section id="experiencia" className="section-padding section-alt relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--border))] to-transparent" />
+
       <div className="max-w-6xl mx-auto px-6">
-        <AnimatedSection>
-          <span className="text-xs font-medium text-violet-400 tracking-widest uppercase">
+        <AnimatedSection className="text-center mb-16">
+          <span className="inline-block text-xs font-semibold text-[hsl(var(--accent))] tracking-[0.2em] uppercase mb-4">
             Trayectoria
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[hsl(var(--fg))]">
             Experiencia Relevante
           </h2>
         </AnimatedSection>
 
-        <StaggerContainer className="space-y-6" staggerDelay={0.15}>
-          {experiences.map((exp, i) => (
-            <StaggerItem key={i}>
-              <div className="glass rounded-2xl p-6 sm:p-8 glass-hover group relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-violet-500 to-blue-500 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="relative">
+          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-[hsl(var(--border))] hidden lg:block" />
 
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-zinc-100">
-                      {exp.title}
-                    </h3>
-                    <div className="flex items-center gap-2 mt-1">
-                      <Building2 size={14} className="text-zinc-500" />
-                      <span className="text-sm text-zinc-400">
-                        {exp.company}
-                      </span>
+          <StaggerContainer className="space-y-8" staggerDelay={0.15}>
+            {experiences.map((exp, i) => (
+              <StaggerItem key={i}>
+                <div className="flex gap-8">
+                  <div className="hidden lg:flex flex-col items-center pt-7">
+                    <div className="w-10 h-10 rounded-full border-2 border-[hsl(var(--accent))] bg-[hsl(var(--bg))] flex items-center justify-center z-10">
+                      <div className="w-3 h-3 rounded-full bg-[hsl(var(--accent))]" />
                     </div>
-                    {exp.subtitle && (
-                      <p className="text-xs text-zinc-500 mt-1">
-                        {exp.subtitle}
-                      </p>
-                    )}
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-zinc-500 shrink-0">
-                    <Calendar size={13} />
-                    <span>{exp.period}</span>
-                    <span className="text-zinc-700">·</span>
-                    <span>{exp.location}</span>
+
+                  <div className="flex-1 card-base rounded-2xl p-7 sm:p-8 group">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
+                      <div>
+                        <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                          <h3 className="text-lg font-bold text-[hsl(var(--fg))]">
+                            {exp.title}
+                          </h3>
+                          {exp.badge && (
+                            <span className="px-2.5 py-0.5 text-[10px] font-semibold text-[hsl(var(--accent))] bg-[hsl(var(--accent-subtle))] rounded-full">
+                              {exp.badge}
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Building2
+                            size={14}
+                            className="text-[hsl(var(--fg-muted))]"
+                          />
+                          <span className="text-sm text-[hsl(var(--fg-muted))]">
+                            {exp.company}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-[hsl(var(--fg-muted))] shrink-0">
+                        <Calendar size={13} />
+                        <span className="font-medium">{exp.period}</span>
+                        <span className="text-[hsl(var(--border))]">|</span>
+                        <span>{exp.location}</span>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-2.5 mb-6">
+                      {exp.description.map((item, j) => (
+                        <li key={j} className="flex items-start gap-3 text-sm">
+                          <ArrowRight
+                            size={14}
+                            className="text-[hsl(var(--accent))] mt-0.5 shrink-0"
+                          />
+                          <span className="text-[hsl(var(--fg-muted))]">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-2 pt-5 border-t border-[hsl(var(--border))]">
+                      {exp.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-xs font-medium text-[hsl(var(--accent))] bg-[hsl(var(--accent-subtle))] border border-[hsl(var(--accent)/0.1)] rounded-lg"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-
-                <ul className="space-y-2 mb-5">
-                  {exp.description.map((item, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-2 text-sm text-zinc-400"
-                    >
-                      <span className="w-1 h-1 rounded-full bg-violet-500/50 mt-2 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-xs font-medium text-violet-300 bg-violet-500/10 border border-violet-500/15 rounded-lg"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
       </div>
     </section>
   );

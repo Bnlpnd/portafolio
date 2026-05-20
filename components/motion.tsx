@@ -4,7 +4,7 @@ import { motion, type Variants } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -14,23 +14,23 @@ const fadeIn: Variants = {
 };
 
 const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.95 },
+  hidden: { opacity: 0, scale: 0.9 },
   visible: { opacity: 1, scale: 1 },
 };
 
 const slideLeft: Variants = {
-  hidden: { opacity: 0, x: -30 },
+  hidden: { opacity: 0, x: -50 },
   visible: { opacity: 1, x: 0 },
 };
 
 const slideRight: Variants = {
-  hidden: { opacity: 0, x: 30 },
+  hidden: { opacity: 0, x: 50 },
   visible: { opacity: 1, x: 0 },
 };
 
 export const variants = { fadeUp, fadeIn, scaleIn, slideLeft, slideRight };
 
-function useInView(threshold = 0.15) {
+function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 
@@ -72,7 +72,7 @@ export function AnimatedSection({
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={variants[variant]}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -83,7 +83,7 @@ export function AnimatedSection({
 export function StaggerContainer({
   children,
   className = "",
-  staggerDelay = 0.1,
+  staggerDelay = 0.12,
 }: {
   children: ReactNode;
   className?: string;
@@ -117,11 +117,43 @@ export function StaggerItem({
   return (
     <motion.div
       variants={fadeUp}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
     </motion.div>
+  );
+}
+
+export function AnimatedCounter({
+  value,
+  suffix = "",
+}: {
+  value: number;
+  suffix?: string;
+}) {
+  const { ref, inView } = useInView();
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const duration = 1500;
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * value));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [inView, value]);
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
   );
 }
 

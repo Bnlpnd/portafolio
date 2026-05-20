@@ -1,98 +1,108 @@
 "use client";
 
 import { AnimatedSection, StaggerContainer, StaggerItem } from "./motion";
-import { MapPin, GraduationCap, Briefcase, Sparkles } from "lucide-react";
+import {
+  GraduationCap,
+  Briefcase,
+  Sparkles,
+  Target,
+} from "lucide-react";
 
 const highlights = [
   {
     icon: GraduationCap,
-    label: "Formación",
+    title: "Formación",
     value: "Ing. de Sistemas",
-    detail: "USAT",
+    detail: "Universidad Católica Santo Toribio de Mogrovejo",
   },
   {
     icon: Briefcase,
-    label: "Enfoque",
+    title: "Enfoque",
     value: "Análisis & Desarrollo",
-    detail: "Sistemas empresariales",
+    detail: "Sistemas empresariales y automatización",
   },
   {
     icon: Sparkles,
-    label: "Especialidad",
+    title: "Especialidad",
     value: "ML & Automatización",
-    detail: "Python + Django",
+    detail: "Python, Django, Scikit-learn",
   },
   {
-    icon: MapPin,
-    label: "Ubicación",
-    value: "Lambayeque, Perú",
-    detail: "Disponible para Lima",
+    icon: Target,
+    title: "Objetivo",
+    value: "Entornos Corporativos",
+    detail: "Análisis, mantenimiento y mejora de apps",
   },
 ];
 
 export default function About() {
   return (
-    <section id="sobre-mi" className="py-24 sm:py-32">
+    <section id="sobre-mi" className="section-padding relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--border))] to-transparent" />
+
       <div className="max-w-6xl mx-auto px-6">
-        <AnimatedSection>
-          <span className="text-xs font-medium text-violet-400 tracking-widest uppercase">
+        <AnimatedSection className="text-center mb-16">
+          <span className="inline-block text-xs font-semibold text-[hsl(var(--accent))] tracking-[0.2em] uppercase mb-4">
             Sobre mí
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[hsl(var(--fg))]">
             Perfil Profesional
           </h2>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
-          <AnimatedSection className="lg:col-span-3 space-y-5" delay={0.1}>
-            <p className="text-zinc-400 leading-relaxed">
+        <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
+          <AnimatedSection variant="slideLeft" className="space-y-6">
+            <p className="text-[hsl(var(--fg-muted))] leading-relaxed text-base">
               Bachiller en Ingeniería de Sistemas por la Universidad Católica
               Santo Toribio de Mogrovejo con experiencia práctica en{" "}
-              <span className="text-zinc-200">
+              <span className="text-[hsl(var(--fg))] font-medium">
                 desarrollo de sistemas web, gestión de bases de datos y
                 automatización de procesos
               </span>
               .
             </p>
-            <p className="text-zinc-400 leading-relaxed">
-              He diseñado e implementado soluciones reales para organizaciones —
-              desde{" "}
-              <span className="text-zinc-200">
+            <p className="text-[hsl(var(--fg-muted))] leading-relaxed text-base">
+              He diseñado e implementado soluciones reales para organizaciones
+              — desde{" "}
+              <span className="text-[hsl(var(--fg))] font-medium">
                 sistemas de cotización con Machine Learning
               </span>{" "}
               hasta{" "}
-              <span className="text-zinc-200">
+              <span className="text-[hsl(var(--fg))] font-medium">
                 plataformas de gestión documental para entidades públicas
               </span>
               . Mi enfoque combina el análisis de requerimientos con la
               capacidad técnica para llevarlos a producción.
             </p>
-            <p className="text-zinc-400 leading-relaxed">
+            <p className="text-[hsl(var(--fg-muted))] leading-relaxed text-base">
               Busco desarrollarme como{" "}
-              <span className="text-violet-400 font-medium">
+              <span className="text-[hsl(var(--accent))] font-semibold">
                 Analista de Sistemas
               </span>{" "}
-              en entornos corporativos, aportando en el análisis, mantenimiento
-              y mejora continua de aplicaciones empresariales.
+              en entornos corporativos, aportando en el análisis,
+              mantenimiento y mejora continua de aplicaciones empresariales.
             </p>
           </AnimatedSection>
 
-          <StaggerContainer
-            className="lg:col-span-2 grid grid-cols-2 gap-3"
-            staggerDelay={0.1}
-          >
+          <StaggerContainer className="grid grid-cols-2 gap-4" staggerDelay={0.12}>
             {highlights.map((item) => (
-              <StaggerItem key={item.label}>
-                <div className="glass rounded-2xl p-4 glass-hover group">
-                  <item.icon
-                    size={18}
-                    className="text-violet-400 mb-3 group-hover:scale-110 transition-transform"
-                  />
-                  <p className="text-xs text-zinc-500 mb-0.5">{item.label}</p>
-                  <p className="text-sm font-medium text-zinc-200">
+              <StaggerItem key={item.title}>
+                <div className="card-base rounded-2xl p-5 h-full">
+                  <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent-subtle))] flex items-center justify-center mb-4">
+                    <item.icon
+                      size={18}
+                      className="text-[hsl(var(--accent))]"
+                    />
+                  </div>
+                  <p className="text-[10px] text-[hsl(var(--fg-muted))] tracking-widest uppercase mb-1">
+                    {item.title}
+                  </p>
+                  <p className="text-sm font-semibold text-[hsl(var(--fg))] mb-1">
                     {item.value}
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">{item.detail}</p>
+                  <p className="text-xs text-[hsl(var(--fg-muted))] leading-relaxed">
+                    {item.detail}
+                  </p>
                 </div>
               </StaggerItem>
             ))}

@@ -1,13 +1,7 @@
 "use client";
 
 import { AnimatedSection, StaggerContainer, StaggerItem } from "./motion";
-import {
-  Database,
-  Code2,
-  Brain,
-  Wrench,
-  BookOpen,
-} from "lucide-react";
+import { Database, Code2, Brain, Wrench, BookOpen } from "lucide-react";
 
 const skillCategories = [
   {
@@ -69,16 +63,21 @@ const skillCategories = [
 function SkillBar({ name, level }: { name: string; level: number }) {
   return (
     <div className="group">
-      <div className="flex items-center justify-between mb-1.5">
-        <span className="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-xs font-medium text-[hsl(var(--fg-muted))] group-hover:text-[hsl(var(--fg))] transition-colors">
           {name}
         </span>
-        <span className="text-[10px] text-zinc-600">{level}%</span>
+        <span className="text-[10px] font-semibold text-[hsl(var(--accent))]">
+          {level}%
+        </span>
       </div>
-      <div className="h-1 bg-white/[0.04] rounded-full overflow-hidden">
+      <div className="h-1.5 bg-[hsl(var(--bg-alt))] rounded-full overflow-hidden">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-violet-500 to-blue-500 transition-all duration-1000"
-          style={{ width: `${level}%` }}
+          className="h-full rounded-full transition-all duration-1000 ease-out"
+          style={{
+            width: `${level}%`,
+            background: `linear-gradient(90deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)))`,
+          }}
         />
       </div>
     </div>
@@ -87,16 +86,18 @@ function SkillBar({ name, level }: { name: string; level: number }) {
 
 export default function Skills() {
   return (
-    <section id="habilidades" className="py-24 sm:py-32">
+    <section id="habilidades" className="section-padding section-alt relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--border))] to-transparent" />
+
       <div className="max-w-6xl mx-auto px-6">
-        <AnimatedSection>
-          <span className="text-xs font-medium text-violet-400 tracking-widest uppercase">
+        <AnimatedSection className="text-center mb-16">
+          <span className="inline-block text-xs font-semibold text-[hsl(var(--accent))] tracking-[0.2em] uppercase mb-4">
             Habilidades
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[hsl(var(--fg))] mb-4">
             Stack Técnico
           </h2>
-          <p className="text-zinc-500 max-w-xl mb-12">
+          <p className="text-[hsl(var(--fg-muted))] max-w-xl mx-auto">
             Tecnologías y herramientas que utilizo para analizar, diseñar e
             implementar soluciones.
           </p>
@@ -108,16 +109,19 @@ export default function Skills() {
         >
           {skillCategories.map((category) => (
             <StaggerItem key={category.title}>
-              <div className="glass rounded-2xl p-6 glass-hover group h-full">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-9 h-9 rounded-lg bg-violet-500/10 flex items-center justify-center">
-                    <category.icon size={16} className="text-violet-400" />
+              <div className="card-base rounded-2xl p-6 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent-subtle))] flex items-center justify-center">
+                    <category.icon
+                      size={18}
+                      className="text-[hsl(var(--accent))]"
+                    />
                   </div>
-                  <h3 className="text-sm font-semibold text-zinc-200">
+                  <h3 className="text-sm font-bold text-[hsl(var(--fg))]">
                     {category.title}
                   </h3>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {category.skills.map((skill) => (
                     <SkillBar
                       key={skill.name}

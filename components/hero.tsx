@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Mail, Linkedin } from "lucide-react";
+import { ArrowDown, Mail, Linkedin, MapPin } from "lucide-react";
+import { AnimatedCounter } from "./motion";
 
 export default function Hero() {
   return (
@@ -9,66 +10,86 @@ export default function Hero() {
       id="inicio"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
+      <div className="absolute inset-0 dot-pattern opacity-40" />
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-[128px] animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-600/8 rounded-full blur-[128px] animate-pulse-slow [animation-delay:2s]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/5 rounded-full blur-[128px]" />
+        <div className="absolute top-20 right-1/4 w-72 h-72 bg-[hsl(var(--accent)/0.06)] rounded-full blur-[100px]" />
+        <div className="absolute bottom-32 left-1/4 w-96 h-96 bg-[hsl(var(--accent)/0.04)] rounded-full blur-[120px]" />
       </div>
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,hsl(0_0%_3%)_70%)]" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-6"
+          className="mb-8"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-medium text-violet-300 bg-violet-500/10 border border-violet-500/20 rounded-full">
-            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+          <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-[hsl(var(--accent))] bg-[hsl(var(--accent-subtle))] border border-[hsl(var(--accent)/0.15)] rounded-full">
+            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
             Disponible para trabajar
           </span>
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight mb-4"
         >
-          Zoila Benel
-          <span className="block text-gradient mt-2">Pando</span>
+          <span className="text-[hsl(var(--fg))]">Zoila Benel</span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-lg sm:text-xl text-zinc-400 mb-4 max-w-2xl mx-auto"
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className="mb-6"
         >
-          Analista & Desarrolladora de Sistemas
-        </motion.p>
+          <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient">
+            Pando
+          </span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="inline-block mb-6"
+        >
+          <div className="px-5 py-2.5 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]">
+            <p className="text-base sm:text-lg font-medium text-[hsl(var(--fg))]">
+              Analista & Desarrolladora de Sistemas
+            </p>
+          </div>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="text-sm sm:text-base text-zinc-500 mb-10 max-w-xl mx-auto leading-relaxed"
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="text-sm sm:text-base text-[hsl(var(--fg-muted))] mb-3 max-w-lg mx-auto leading-relaxed"
         >
           Transformo procesos en soluciones digitales inteligentes.
-          <br />
-          Desarrollo web, bases de datos y Machine Learning.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex items-center justify-center gap-2 text-xs text-[hsl(var(--fg-muted))] mb-10"
+        >
+          <MapPin size={13} />
+          <span>Lambayeque, Perú</span>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.7, delay: 0.9 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
           <a
             href="#contacto"
-            className="group flex items-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium rounded-xl transition-all hover:shadow-lg hover:shadow-violet-600/25"
+            className="group flex items-center gap-2 px-7 py-3.5 bg-[hsl(var(--accent))] hover:bg-[hsl(var(--accent-hover))] text-[hsl(var(--accent-fg))] text-sm font-medium rounded-xl transition-all shadow-lg shadow-[hsl(var(--accent)/0.15)] hover:shadow-xl hover:shadow-[hsl(var(--accent)/0.25)]"
           >
             <Mail size={16} />
             Contactar
@@ -77,26 +98,50 @@ export default function Hero() {
             href="https://www.linkedin.com/in/zoila-benel/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-3 text-sm font-medium text-zinc-300 glass rounded-xl glass-hover"
+            className="flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-[hsl(var(--fg))] card-base rounded-xl"
           >
             <Linkedin size={16} />
             LinkedIn
           </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.1 }}
+          className="grid grid-cols-3 gap-8 max-w-sm mx-auto"
+        >
+          {[
+            { value: 2, suffix: "+", label: "Proyectos" },
+            { value: 6, suffix: "+", label: "Tecnologías" },
+            { value: 2025, suffix: "", label: "USAT" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-[hsl(var(--fg))]">
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+              </p>
+              <p className="text-xs text-[hsl(var(--fg-muted))] mt-1">
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </motion.div>
       </div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <a
           href="#sobre-mi"
-          className="flex flex-col items-center gap-2 text-zinc-600 hover:text-zinc-400 transition-colors"
+          className="flex flex-col items-center gap-2 text-[hsl(var(--fg-muted))] hover:text-[hsl(var(--accent))] transition-colors"
         >
-          <span className="text-xs">Explorar</span>
-          <ArrowDown size={16} className="animate-bounce" />
+          <span className="text-[10px] tracking-widest uppercase">
+            Explorar
+          </span>
+          <ArrowDown size={14} className="animate-bounce" />
         </a>
       </motion.div>
     </section>

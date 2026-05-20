@@ -1,94 +1,137 @@
 "use client";
 
-import { AnimatedSection } from "./motion";
-import { GraduationCap, Globe, Award } from "lucide-react";
+import { AnimatedSection, StaggerContainer, StaggerItem } from "./motion";
+import { GraduationCap, Globe, Award, Heart } from "lucide-react";
+
+const competencies = [
+  "Pensamiento analítico",
+  "Resolución de problemas",
+  "Adaptabilidad tecnológica",
+  "Organización de información",
+  "Trabajo autónomo",
+];
 
 export default function Education() {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="section-padding relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--border))] to-transparent" />
+
       <div className="max-w-6xl mx-auto px-6">
-        <AnimatedSection>
-          <span className="text-xs font-medium text-violet-400 tracking-widest uppercase">
+        <AnimatedSection className="text-center mb-16">
+          <span className="inline-block text-xs font-semibold text-[hsl(var(--accent))] tracking-[0.2em] uppercase mb-4">
             Formación
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-12">
-            Educación
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[hsl(var(--fg))]">
+            Educación & Competencias
           </h2>
         </AnimatedSection>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <AnimatedSection delay={0.1}>
-            <div className="glass rounded-2xl p-6 glass-hover group h-full">
-              <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <GraduationCap size={20} className="text-violet-400" />
+        <StaggerContainer
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          staggerDelay={0.1}
+        >
+          <StaggerItem>
+            <div className="card-base rounded-2xl p-6 h-full">
+              <div className="w-11 h-11 rounded-xl bg-[hsl(var(--accent-subtle))] flex items-center justify-center mb-5">
+                <GraduationCap
+                  size={20}
+                  className="text-[hsl(var(--accent))]"
+                />
               </div>
-              <h3 className="text-base font-semibold text-zinc-100 mb-1">
+              <h3 className="text-sm font-bold text-[hsl(var(--fg))] mb-1">
                 Bachiller en Ingeniería de Sistemas
               </h3>
-              <p className="text-sm text-violet-400 mb-2">
-                Universidad Católica Santo Toribio de Mogrovejo
+              <p className="text-xs text-[hsl(var(--accent))] font-medium mb-3">
+                USAT
               </p>
-              <p className="text-xs text-zinc-500">
-                Finalización: 2025
+              <p className="text-xs text-[hsl(var(--fg-muted))] leading-relaxed">
+                Universidad Católica Santo Toribio de Mogrovejo. Finalización
+                2025.
               </p>
-              <p className="text-xs text-zinc-500 mt-1">
-                Título profesional en trámite
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <div className="glass rounded-2xl p-6 glass-hover group h-full">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Globe size={20} className="text-blue-400" />
+              <div className="mt-3 px-2.5 py-1 inline-block text-[10px] font-medium text-[hsl(var(--accent))] bg-[hsl(var(--accent-subtle))] rounded-md">
+                Título en trámite
               </div>
-              <h3 className="text-base font-semibold text-zinc-100 mb-1">
+            </div>
+          </StaggerItem>
+
+          <StaggerItem>
+            <div className="card-base rounded-2xl p-6 h-full">
+              <div className="w-11 h-11 rounded-xl bg-[hsl(var(--accent-subtle))] flex items-center justify-center mb-5">
+                <Globe size={20} className="text-[hsl(var(--accent))]" />
+              </div>
+              <h3 className="text-sm font-bold text-[hsl(var(--fg))] mb-4">
                 Idiomas
               </h3>
-              <div className="space-y-2 mt-3">
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-zinc-400">Español</span>
-                  <span className="text-xs text-zinc-500 px-2 py-0.5 bg-white/[0.04] rounded-md">
+                  <span className="text-sm text-[hsl(var(--fg-muted))]">
+                    Español
+                  </span>
+                  <span className="px-2.5 py-0.5 text-[10px] font-semibold text-[hsl(var(--accent))] bg-[hsl(var(--accent-subtle))] rounded-md">
                     Nativo
                   </span>
                 </div>
+                <div className="h-px bg-[hsl(var(--border))]" />
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-zinc-400">Inglés</span>
-                  <span className="text-xs text-zinc-500 px-2 py-0.5 bg-white/[0.04] rounded-md">
+                  <span className="text-sm text-[hsl(var(--fg-muted))]">
+                    Inglés
+                  </span>
+                  <span className="px-2.5 py-0.5 text-[10px] font-semibold text-[hsl(var(--fg-muted))] bg-[hsl(var(--bg-alt))] rounded-md">
                     Intermedio
                   </span>
                 </div>
               </div>
             </div>
-          </AnimatedSection>
+          </StaggerItem>
 
-          <AnimatedSection delay={0.3}>
-            <div className="glass rounded-2xl p-6 glass-hover group h-full">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Award size={20} className="text-emerald-400" />
+          <StaggerItem>
+            <div className="card-base rounded-2xl p-6 h-full">
+              <div className="w-11 h-11 rounded-xl bg-[hsl(var(--accent-subtle))] flex items-center justify-center mb-5">
+                <Award size={20} className="text-[hsl(var(--accent))]" />
               </div>
-              <h3 className="text-base font-semibold text-zinc-100 mb-1">
+              <h3 className="text-sm font-bold text-[hsl(var(--fg))] mb-4">
                 Competencias
               </h3>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {[
-                  "Pensamiento analítico",
-                  "Resolución de problemas",
-                  "Adaptabilidad",
-                  "Organización",
-                  "Trabajo autónomo",
-                ].map((comp) => (
+              <div className="flex flex-wrap gap-2">
+                {competencies.map((comp) => (
                   <span
                     key={comp}
-                    className="px-2.5 py-1 text-xs text-zinc-400 bg-white/[0.03] border border-white/[0.06] rounded-lg"
+                    className="px-2.5 py-1 text-xs text-[hsl(var(--fg-muted))] bg-[hsl(var(--bg-alt))] border border-[hsl(var(--border))] rounded-lg"
                   >
                     {comp}
                   </span>
                 ))}
               </div>
             </div>
-          </AnimatedSection>
-        </div>
+          </StaggerItem>
+
+          <StaggerItem>
+            <div className="card-base rounded-2xl p-6 h-full">
+              <div className="w-11 h-11 rounded-xl bg-[hsl(var(--accent-subtle))] flex items-center justify-center mb-5">
+                <Heart size={20} className="text-[hsl(var(--accent))]" />
+              </div>
+              <h3 className="text-sm font-bold text-[hsl(var(--fg))] mb-4">
+                Intereses
+              </h3>
+              <div className="space-y-2">
+                {[
+                  "Sistemas empresariales",
+                  "Bases de datos",
+                  "Optimización de procesos",
+                  "Inteligencia Artificial",
+                ].map((interest) => (
+                  <div
+                    key={interest}
+                    className="flex items-center gap-2 text-sm text-[hsl(var(--fg-muted))]"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--accent))]" />
+                    {interest}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </StaggerItem>
+        </StaggerContainer>
       </div>
     </section>
   );
