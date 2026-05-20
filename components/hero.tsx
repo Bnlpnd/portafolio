@@ -33,21 +33,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6"
         >
-          <span className="text-[hsl(var(--fg))]">Zoila Benel</span>
+          <span className="text-[hsl(var(--fg))]">Zoila </span>
+          <span className="text-gradient">Benel Pando</span>
         </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
-          className="mb-6"
-        >
-          <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient">
-            Pando
-          </span>
-        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -85,7 +75,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <a
             href="#contacto"
@@ -132,7 +122,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2"
       >
         <a
           href="#sobre-mi"

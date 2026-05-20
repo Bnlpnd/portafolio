@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatedSection, StaggerContainer, StaggerItem } from "./motion";
-import { Mail, Phone, MapPin, Linkedin, Send, Clock } from "lucide-react";
+import { Mail, MapPin, Linkedin, Send, Clock } from "lucide-react";
 
 const contactInfo = [
   {
@@ -9,12 +9,6 @@ const contactInfo = [
     label: "Email",
     value: "zoila.benel@gmail.com",
     href: "mailto:zoila.benel@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Teléfono",
-    value: "+51 942 025 999",
-    href: "tel:+51942025999",
   },
   {
     icon: MapPin,
@@ -62,7 +56,7 @@ export default function Contact() {
             </div>
 
             <StaggerContainer
-              className="grid sm:grid-cols-2 gap-4 mb-8"
+              className="grid sm:grid-cols-3 gap-4 mb-8"
               staggerDelay={0.1}
             >
               {contactInfo.map((item) => {
