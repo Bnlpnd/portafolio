@@ -15,6 +15,20 @@ const cases={
  tech:"Django · SQL · Excel",result:"Se desarrolló y probó un sistema de registro y seguimiento documental durante las prácticas. El informe recomienda su implementación formal como paso posterior; no se atribuyen métricas de impacto ni despliegue institucional no documentados.",next:"Incorporar capturas autorizadas y un diagrama del proceso, sin divulgar datos internos o personales."
  }
 } as const;
+const gallery:Record<string,{src:string;caption:string}[]>={
+"cotizacion-puertas":[
+{src:"/proyectos/cotizacion-puertas/panel-proformas.webp",caption:"Panel de gestión de proformas"},
+{src:"/proyectos/cotizacion-puertas/detalle-proforma.webp",caption:"Detalle de una proforma"},
+{src:"/proyectos/cotizacion-puertas/estimacion-precios.webp",caption:"Estimación y comparación de opciones de precio"},
+{src:"/proyectos/cotizacion-puertas/generacion-contrato.webp",caption:"Generación de contratos"}
+],
+"gestion-municipal":[
+{src:"/proyectos/gestion-municipal/panel-obras.webp",caption:"Panel del perfil Obras"},
+{src:"/proyectos/gestion-municipal/panel-seguimiento.webp",caption:"Panel de seguimiento de resoluciones"},
+{src:"/proyectos/gestion-municipal/modelo-datos.webp",caption:"Modelo de datos del sistema"},
+{src:"/proyectos/gestion-municipal/panel-fiscalizacion.webp",caption:"Panel de Fiscalización"}
+]
+};
 type Slug=keyof typeof cases;
 export function generateStaticParams(){return Object.keys(cases).map(slug=>({slug}));}
 export default async function CasePage({params}:{params:Promise<{slug:string}>}){
@@ -27,6 +41,7 @@ export default async function CasePage({params}:{params:Promise<{slug:string}>})
  <div className="mt-16 grid gap-12 border-t border-[#c7d6ce] pt-12 md:grid-cols-[.3fr_1fr]"><h2 className="text-xs font-bold uppercase tracking-widest text-[#52796f]">El desafío</h2><p className="text-xl leading-relaxed">{item.challenge}</p></div>
  <div className="mt-14 grid gap-12 border-t border-[#c7d6ce] pt-12 md:grid-cols-[.3fr_1fr]"><h2 className="text-xs font-bold uppercase tracking-widest text-[#52796f]">Mi participación</h2><p className="text-lg leading-relaxed text-[#53615e]">{item.role}</p></div>
  <div className="mt-14 grid gap-12 border-t border-[#c7d6ce] pt-12 md:grid-cols-[.3fr_1fr]"><h2 className="text-xs font-bold uppercase tracking-widest text-[#52796f]">Enfoque y solución</h2><ol className="space-y-5">{item.approach.map((step,i)=><li key={step} className="flex gap-5 text-base leading-relaxed"><span className="font-serif text-2xl text-[#52796f]">0{i+1}</span><span>{step}</span></li>)}</ol></div>
+ <section className="mt-16 border-t border-[#c7d6ce] pt-12"><p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#52796f]">Evidencias del sistema</p><h2 className="mb-8 font-serif text-3xl md:text-4xl">El trabajo, en imágenes.</h2><div className="grid gap-7 md:grid-cols-2">{gallery[slug]?.map((shot)=><figure key={shot.src} className="overflow-hidden border border-[#c7d6ce] bg-white"><a href={shot.src} target="_blank" rel="noopener noreferrer" aria-label={"Ampliar: "+shot.caption}><img src={shot.src} alt={shot.caption} loading="lazy" className="aspect-[4/3] w-full object-contain p-3"/></a><figcaption className="border-t border-[#c7d6ce] px-4 py-3 text-sm text-[#53615e]">{shot.caption}</figcaption></figure>)}</div><p className="mt-4 text-xs text-[#53615e]">Capturas tomadas de la documentación del proyecto. Seleccionadas para mostrar funcionalidades y estructura sin publicar expedientes completos.</p></section>
  <div className="mt-14 grid gap-12 border-t border-[#c7d6ce] pt-12 md:grid-cols-[.3fr_1fr]"><h2 className="text-xs font-bold uppercase tracking-widest text-[#52796f]">Tecnologías</h2><p className="text-lg">{item.tech}</p></div>
  <div className="mt-14 grid gap-12 border-t border-[#c7d6ce] pt-12 md:grid-cols-[.3fr_1fr]"><h2 className="text-xs font-bold uppercase tracking-widest text-[#52796f]">Resultado documentado</h2><div><p className="text-lg leading-relaxed">{item.result}</p><div className="mt-8 border-l-2 border-[#52796f] bg-[#e9eee9] p-6"><p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#52796f]">Próxima actualización</p><p className="text-sm leading-relaxed">{item.next}</p></div></div></div>
  <a href="/#contacto" className="mt-16 inline-flex items-center gap-3 rounded-full bg-[#1e2929] px-7 py-4 text-sm font-semibold text-white">Conversemos <ArrowUpRight size={16}/></a>
