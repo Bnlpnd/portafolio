@@ -1,18 +1,18 @@
-import {ArrowLeft,ArrowUpRight,CheckCircle2} from "lucide-react";
+import {ArrowLeft,ArrowUpRight} from "lucide-react";
 const cases={
  "cotizacion-puertas":{
  eyebrow:"Investigación aplicada · 2025",title:"Sistema inteligente de cotización de puertas",client:"Carpintería Metálica Santa Ana",
- challenge:"La cotización de puertas metálicas requiere considerar dimensiones, materiales, modelos y reglas de negocio. El proyecto buscó apoyar ese proceso mediante una herramienta digital.",
- role:"Proyecto de tesis: análisis de requerimientos, modelado de datos, desarrollo web e integración de un modelo predictivo.",
- approach:["Identificación de variables y reglas necesarias para cotizar puertas.","Diseño de una aplicación web para registrar información y gestionar cotizaciones.","Exploración de modelos de aprendizaje automático para estimar precios.","Integración de funciones de generación documental y seguimiento de pedidos."],
- tech:"Python · Django · SQLite · Scikit-learn",result:"Se desarrolló una solución web como proyecto académico. No se publican cifras de ahorro ni resultados comerciales sin documentación que los respalde.",next:"Agregar capturas del sistema, arquitectura, criterios de evaluación y resultados verificados de la tesis."
+ challenge:"El proceso manual de cotización de puertas metálicas podía tomar entre 24 y 48 horas, con variaciones en los precios y dependencia del propietario para preparar las propuestas. El objetivo fue organizar y digitalizar el proceso comercial.",
+ role:"Proyecto de tesis: análisis del proceso comercial y requerimientos, diseño y desarrollo de la aplicación web, modelado de datos e integración y evaluación del modelo predictivo.",
+ approach:["Análisis del flujo comercial, variables de precio y requerimientos de los distintos usuarios.","Desarrollo de galería de puertas, solicitudes, bandeja de proformas y configuración de cotizaciones.","Comparación de Árbol de Decisión, Random Forest y XGBoost; selección de Árbol de Decisión para estimar precios.","Integración del envío de proformas por correo y la generación de contratos."],
+ tech:"Python · Django · SQLite · Bootstrap · Scikit-learn · Árbol de Decisión",result:"En la evaluación académica de la tesis se reportó una reducción aproximada del 70 % en el tiempo de cotización. El modelo final fue Árbol de Decisión, elegido por su rendimiento, interpretabilidad y eficiencia computacional tras compararlo con Random Forest y XGBoost. Los indicadores de evaluación del modelo fueron R² = 0.9966 y RMSE = 146.91 en prueba; no representan una garantía de precisión comercial futura.",next:"Incorporar capturas pertinentes del manual (páginas 3 a 9), verificando antes que no expongan información personal de clientes."
  },
  "gestion-municipal":{
- eyebrow:"Sector público · 2025",title:"Sistema de gestión de resoluciones municipales",client:"Municipalidad de Lambayeque",
+ eyebrow:"Sector público · 2025",title:"Sistema de gestión de resoluciones municipales",client:"Municipalidad Provincial de Lambayeque",
  challenge:"El registro y la consulta de resoluciones vinculadas con licencias de construcción requieren información organizada y trazabilidad para facilitar el trabajo administrativo.",
- role:"Proyecto durante prácticas: análisis del flujo de información, desarrollo del sistema, diseño de roles y reportes.",
- approach:["Organización de la información de resoluciones y expedientes.","Diseño de pantallas para registro, filtrado y consulta.","Implementación de accesos diferenciados según roles.","Generación de reportes y exportación de datos a Excel."],
- tech:"Django · SQL · Excel",result:"Se desarrolló un sistema orientado al registro y seguimiento documental. Su grado de adopción institucional y métricas de impacto están pendientes de verificación.",next:"Incorporar capturas autorizadas y un diagrama del proceso, sin divulgar datos internos o personales."
+ role:"Prácticas preprofesionales en Control Urbano y Catastro (260 horas): levantamiento del proceso, análisis de documentos, diseño de datos, desarrollo, pruebas y documentación.",
+ approach:["Análisis de documentos y del flujo de resoluciones de licencias de edificación.","Diseño del modelo de datos y de pantallas para registro, edición, consulta y filtros.","Implementación de accesos diferenciados para Obras y Fiscalización.","Exportación a Excel, pruebas funcionales y elaboración del manual de usuario."],
+ tech:"Django · SQL · Excel",result:"Se desarrolló y probó un sistema de registro y seguimiento documental durante las prácticas. El informe recomienda su implementación formal como paso posterior; no se atribuyen métricas de impacto ni despliegue institucional no documentados.",next:"Incorporar capturas autorizadas y un diagrama del proceso, sin divulgar datos internos o personales."
  }
 } as const;
 type Slug=keyof typeof cases;
