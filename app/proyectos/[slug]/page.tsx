@@ -18,15 +18,16 @@ const cases={
 const gallery:Record<string,{src:string;caption:string}[]>={
 "cotizacion-puertas":[
 {src:"/proyectos/cotizacion-puertas/panel-proformas.webp",caption:"Panel de gestión de proformas"},
-{src:"/proyectos/cotizacion-puertas/detalle-proforma.webp",caption:"Detalle de una proforma"},
+{src:"/proyectos/cotizacion-puertas/proforma_datos_protegidos.webp",caption:"Proforma con datos protegidos"},
 {src:"/proyectos/cotizacion-puertas/estimacion-precios.webp",caption:"Estimación y comparación de opciones de precio"},
 {src:"/proyectos/cotizacion-puertas/generacion-contrato.webp",caption:"Generación de contratos"}
 ],
 "gestion-municipal":[
-{src:"/proyectos/gestion-municipal/panel-obras.webp",caption:"Panel del perfil Obras"},
-{src:"/proyectos/gestion-municipal/panel-seguimiento.webp",caption:"Panel de seguimiento de resoluciones"},
+{src:"/proyectos/gestion-municipal/exportar_resoluciones.webp",caption:"Exportación de resoluciones"},
+{src:"/proyectos/gestion-municipal/ver_resolucion.webp",caption:"Consulta de resolución"},
 {src:"/proyectos/gestion-municipal/modelo-datos.webp",caption:"Modelo de datos del sistema"},
-{src:"/proyectos/gestion-municipal/panel-fiscalizacion.webp",caption:"Panel de Fiscalización"}
+{src:"/proyectos/gestion-municipal/panel-fiscalizacion.webp",caption:"Panel de Fiscalización"},
+{src:"/proyectos/gestion-municipal/diagrama_flujo.webp",caption:"Diagrama de flujo del proceso"}
 ]
 };
 type Slug=keyof typeof cases;
