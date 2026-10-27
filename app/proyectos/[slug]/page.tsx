@@ -17,10 +17,14 @@ const cases={
 } as const;
 const gallery:Record<string,{src:string;caption:string}[]>={
 "cotizacion-puertas":[
-{src:"/proyectos/cotizacion-puertas/proforma_datos_protegidos.webp",caption:"01 · Proforma generada"},
-{src:"/proyectos/cotizacion-puertas/panel-proformas.webp",caption:"02 · Panel de gestión de solicitudes"},
-{src:"/proyectos/cotizacion-puertas/estimacion-precios.webp",caption:"03 · Estimación y configuración de precios"},
-{src:"/proyectos/cotizacion-puertas/generacion-contrato.webp",caption:"04 · Generación de contratos"}
+{src:"/proyectos/cotizacion-puertas/diagrama_flujo.webp",caption:"01 · Diagrama de flujo"},
+{src:"/proyectos/cotizacion-puertas/proforma_datos_protegidos.webp",caption:"02 · Proforma generada"},
+{src:"/proyectos/cotizacion-puertas/panel-proformas.webp",caption:"03 · Panel de gestión de solicitudes"},
+{src:"/proyectos/cotizacion-puertas/prediccion_ia_figuras.webp",caption:"04 · Predicción IA"},
+{src:"/proyectos/cotizacion-puertas/estimacion-precios.webp",caption:"05 · Estimación y configuración de precios"},
+{src:"/proyectos/cotizacion-puertas/generacion-contrato.webp",caption:"06 · Generación de contratos"},
+{src:"/proyectos/cotizacion-puertas/resolucion_datos_difuminados.webp",caption:"07 · Resolución con datos protegidos"},
+{src:"/proyectos/cotizacion-puertas/proforma_correo.webp",caption:"08 · Proforma enviada por correo"}
 ],
 "gestion-municipal":[
 {src:"/proyectos/gestion-municipal/diagrama_flujo.webp",caption:"01 · Diagrama de flujo del proceso"},
