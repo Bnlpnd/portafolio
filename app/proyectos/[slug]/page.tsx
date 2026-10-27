@@ -17,9 +17,9 @@ const cases={
 } as const;
 const gallery:Record<string,{src:string;caption:string}[]>={
 "cotizacion-puertas":[
-{src:"/proyectos/cotizacion-puertas/panel-proformas.webp",caption:"01 · Panel de gestión de solicitudes y proformas"},
-{src:"/proyectos/cotizacion-puertas/estimacion-precios.webp",caption:"02 · Estimación y configuración de precios"},
-{src:"/proyectos/cotizacion-puertas/proforma_datos_protegidos.webp",caption:"03 · Proforma generada con datos protegidos"},
+{src:"/proyectos/cotizacion-puertas/proforma_datos_protegidos.webp",caption:"01 · Proforma generada"},
+{src:"/proyectos/cotizacion-puertas/panel-proformas.webp",caption:"02 · Panel de gestión de solicitudes"},
+{src:"/proyectos/cotizacion-puertas/estimacion-precios.webp",caption:"03 · Estimación y configuración de precios"},
 {src:"/proyectos/cotizacion-puertas/generacion-contrato.webp",caption:"04 · Generación de contratos"}
 ],
 "gestion-municipal":[
